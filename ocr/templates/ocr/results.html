@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadhaar OCR - Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        pre { background: #f4f4f4; padding: 20px; border-radius: 5px; text-align: left; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h2>Extracted Aadhaar Card Data</h2>
+    <pre>{{ json_data }}</pre>
+    <br>
+    <a href="{% url 'upload_page' %}">Upload Another Aadhaar Card</a>
+</body>
+</html>

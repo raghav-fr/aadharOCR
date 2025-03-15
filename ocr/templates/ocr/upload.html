@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadhaar OCR - Upload</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        form { margin-top: 20px; }
+        input[type="file"] { padding: 10px; }
+        button { padding: 10px 20px; background: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h2>Upload Aadhaar Card (Image or PDF)</h2>
+    <form id="uploadForm" action="{% url 'upload_and_redirect' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="aadhar_file" id="aadhar_file" accept="image/*,application/pdf" required>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
