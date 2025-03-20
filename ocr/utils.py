@@ -5,11 +5,9 @@ import cv2
 import numpy as np
 from PIL import Image
 
-# Initialize EasyOCR Reader
 reader = easyocr.Reader(['en'])
 
 def preprocess_image(image_path):
-    """Preprocess the image to improve OCR accuracy."""
     image = cv2.imread(image_path)
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -23,7 +21,6 @@ def preprocess_image(image_path):
 
 def extract_text_from_image(image_path):
     img=preprocess_image(image_path)
-    """Extract text from an image using EasyOCR."""
     result = reader.readtext(img, detail=0)
     return " ".join(result)
 
