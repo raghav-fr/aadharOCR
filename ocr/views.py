@@ -13,7 +13,6 @@ from django.core.files.base import ContentFile
 
 @api_view(['POST'])
 def extract_dates_api(request):
-    """API to extract DOB and Issue Date from Aadhaar card image."""
     if 'aadhar_image' not in request.FILES:
         return Response({"error": "No file uploaded"}, status=400)
 
@@ -30,12 +29,10 @@ def extract_dates_api(request):
     return Response(extracted_dates)
 
 def upload_page(request):
-    """Render the upload page."""
     return render(request, "ocr/upload.html")
 
 
 def convert_pdf_to_image(pdf_path):
-    """Convert first page of a PDF to an image and return the image path."""
     images = convert_from_path(pdf_path, poppler_path="C:/Users/user/Downloads/poppler-24.08.0/Library/bin" if os.name == "nt" else None)
     if images:
         image_path = pdf_path.replace(".pdf", ".jpg")  
@@ -44,7 +41,6 @@ def convert_pdf_to_image(pdf_path):
     return None
 
 def upload_and_redirect(request):
-    """Handles file upload, converts PDF if needed, calls API, and redirects."""
     if request.method == "POST" and request.FILES.get("aadhar_file"):
         uploaded_file = request.FILES["aadhar_file"]
         file_extension = uploaded_file.name.lower().split('.')[-1]
